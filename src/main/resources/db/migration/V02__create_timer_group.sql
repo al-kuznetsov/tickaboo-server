@@ -1,1 +1,0 @@
-CREATE TABLE timer_group (id bigint primary key, name varchar, user_id bigint references user1 (id) NOT NULL);
