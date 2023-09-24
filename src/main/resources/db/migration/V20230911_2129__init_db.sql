@@ -11,9 +11,8 @@ CREATE TABLE user_account
 
 CREATE TABLE timer_group
 (
-    id      int8    NOT NULL,
-    "name"  varchar NULL,
-    user_id int8    NOT NULL,
+    id     int8    NOT NULL,
+    "name" varchar NULL,
     CONSTRAINT timer_group_pkey PRIMARY KEY (id)
 );
 
@@ -28,22 +27,28 @@ CREATE TABLE timer_schedule
 CREATE TABLE timer
 (
     id                uuid      NOT NULL,
-    "name"            varchar   NULL,
+    name              varchar   NULL,
     description       varchar   NULL,
     duration          interval  NULL,
     is_priority       bool      NULL,
     is_repeat         bool      NULL,
+    is_enabled        bool      NULL,
+    user_account_id   int8      NOT NULL,
     timer_group_id    int8      NOT NULL,
     timer_schedule_id int8      NOT NULL,
     begin_timestamp   timestamp NULL,
     end_timestamp     timestamp NULL,
-    CONSTRAINT timer_pkey PRIMARY KEY (id)
+    CONSTRAINT timer_pkey PRIMARY KEY (id),
+    CONSTRAINT timer_timer_group_id_fkey FOREIGN KEY (timer_group_id) REFERENCES timer_group (id),
+    CONSTRAINT timer_timer_schedule_id_fkey FOREIGN KEY (timer_schedule_id) REFERENCES timer_schedule (id),
+    CONSTRAINT timer_user_account_id_fkey FOREIGN KEY (user_account_id) REFERENCES user_account (id)
 );
 
 CREATE TABLE timer_log
 (
     id                 uuid     NOT NULL,
-    duration_logged_in interval NULL,
     timer_id           uuid     NOT NULL,
-    CONSTRAINT timer_log_pkey PRIMARY KEY (id)
+    duration_logged_in interval NULL,
+    CONSTRAINT timer_log_pkey PRIMARY KEY (id),
+    CONSTRAINT timer_log_timer_id_fkey FOREIGN KEY (timer_id) REFERENCES timer (id)
 );
