@@ -1,3 +1,6 @@
+CREATE SEQUENCE IF NOT EXISTS global_seq START WITH 1;
+CREATE SEQUENCE IF NOT EXISTS user_account_seq START WITH 1;
+
 CREATE TABLE user_account
 (
     id        int8    NOT NULL,
