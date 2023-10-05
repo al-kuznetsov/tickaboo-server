@@ -3,11 +3,14 @@ CREATE SEQUENCE IF NOT EXISTS user_account_seq START WITH 1 INCREMENT BY 5;
 
 CREATE TABLE user_account (
    id int8 NOT NULL,
+   login varchar NOT NULL,
    "name" varchar NULL,
    full_name varchar NULL,
    bio varchar NULL,
    email varchar NULL,
    image varchar NULL,
+   CONSTRAINT user_account_email_key UNIQUE (email),
+   CONSTRAINT user_account_login_key UNIQUE (login),
    CONSTRAINT user_account_pkey PRIMARY KEY (id)
 );
 
