@@ -1,3 +1,7 @@
+api:
+  version:
+    url: /api/v1
+
 spring:
   jpa:
     hibernate:
