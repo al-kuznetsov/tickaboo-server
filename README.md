@@ -2,6 +2,21 @@
 
 This is the backend server for Tick-a-Boo project that help people to manage and track how their time is invested.
 
+## Configure and run
+
+### Database connection
+
+Database connection is configured with properties:  
+```yaml
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+```
+For testing purposes you can bootstrap a postgres database in docker with command   
+`docker run --name postgis-local -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgis/postgis:16-3.4`
+
 ## Code of Conduct
 
 TBD
