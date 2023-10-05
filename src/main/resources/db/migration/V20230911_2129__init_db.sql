@@ -9,6 +9,8 @@ CREATE TABLE user_account (
    bio varchar NULL,
    email varchar NULL,
    image varchar NULL,
+   created_at timestamp NOT NULL,
+   last_updated_at timestamp NOT NULL,
    CONSTRAINT user_account_email_key UNIQUE (email),
    CONSTRAINT user_account_login_key UNIQUE (login),
    CONSTRAINT user_account_pkey PRIMARY KEY (id)
