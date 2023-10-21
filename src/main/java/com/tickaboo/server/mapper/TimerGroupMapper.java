@@ -5,12 +5,9 @@ import com.tickaboo.server.model.TimerGroup;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(config = StandardMapperConfiguration.class,
-        uses = LocalDateTimeMapper.class)
+@Mapper(config = StandardMapperConfiguration.class)
 public interface TimerGroupMapper {
 
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "lastUpdatedAt", ignore = true)
     TimerGroup fromDto(TimerGroupDto timerGroupDto);
 
     TimerGroupDto toDto(TimerGroup timerGroup);
